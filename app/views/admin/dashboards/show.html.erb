@@ -1,0 +1,5 @@
+<%= current_user.email %>
+
+<ul>
+  <li><%= link_to 'Standorte verwalten', admin_customer_locations_path(current_user.customer_id) %></li>
+</ul>

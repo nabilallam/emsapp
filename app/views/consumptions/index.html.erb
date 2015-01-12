@@ -1,0 +1,10 @@
+<div class='container'>
+  Neu:
+  <% current_user.customer.use_sectors.each do |use_sector| %>
+    <%= link_to use_sector.name, new_customer_consumption_path(@current_user.customer_id, use_sector_id: use_sector.id) %> |
+  <% end %>
+
+  <div class='row'>
+    <%= render 'list' %>
+  </div>
+</div>

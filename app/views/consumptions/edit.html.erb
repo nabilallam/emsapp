@@ -1,0 +1,18 @@
+<div class='row'>
+  <%= render partial: 'shared/model_errors', locals: {model: @consumption} %>
+</div>
+
+<div class='row'>
+  <%= form_for @consumption,
+    url: customer_consumption_path(@current_user.customer_id, @consumption),
+    html: {class: 'form-horizontal'}, method: 'put' do |f| %>
+    <%= render partial: 'form', locals: {f: f} %>
+  <% end %>
+</div>
+<div class='row'>
+  <%= render 'list' %>
+</div>
+
+<div class='row'>
+  <%= link_to 'Back', customer_consumptions_path(self.current_user.customer_id) %>
+</div>
