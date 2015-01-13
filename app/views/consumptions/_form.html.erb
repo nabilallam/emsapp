@@ -1,19 +1,31 @@
 <h3>Sector: <%= @consumption.use_sector.name %></h3>
   <%= f.hidden_field :use_sector_id %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :amount %>
-  <%= f.text_field :amount %>
-  <%= f.label :resource_id %>
-  <%= f.text_field :resource_id, collection: @resources, prompt: 'Select Resource' %>
-  <%= f.label :location_id %>
-  <%= f.text_field :location_id, collection: @locations, prompt: 'Select Resource' %>
-  <%= f.label :ts_begin %>
-  <%= f.text_field :ts_begin, as: :string, class: 'datetimepicker',
-    input_html: {value: ((!!@consumption && @consumption.ts_begin) ? @consumption.ts_begin.strftime('%d.%m.%Y') : '')}%>
-  <%= f.label :ts_end %>
-  <%= f.text_field :ts_end, as: :string, class: 'datetimepicker',
-    input_html: {value: ((!!@consumption && @consumption.ts_end) ? @consumption.ts_end.strftime('%d.%m.%Y') : '')}%>
+  <div class='form-group'>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :amount %>
+    <%= f.text_field :amount, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :resource_id %>
+    <%= collection_select :consumption, :resource_id, @resources, :id, :name,{}, prompt: 'Select Resource', class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :location_id %>
+    <%= collection_select :consumption, :location_id, @locations, :id, :name,{}, prompt: 'Select Resource', class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :ts_begin %>
+    <%= f.text_field :ts_begin, as: :string, class: 'datetimepicker form-control',
+       value: ((!!@consumption && @consumption.ts_begin) ? @consumption.ts_begin.strftime('%d.%m.%Y') : '') %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :ts_end %>
+    <%= f.text_field :ts_end, as: :string, class: 'datetimepicker form-control',
+      value: ((!!@consumption && @consumption.ts_end) ? @consumption.ts_end.strftime('%d.%m.%Y') : '') %>
+  </div>
   <%= button_tag class: 'btn btn-primary' do %>
     <%= icon 'save' %>
     save
