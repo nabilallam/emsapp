@@ -8,7 +8,7 @@
 
 customer = Customer.create(name: 'seed_customer')
 user = User.create(email: 'seed@user.org', customer_id: customer.id, password: '12345678', password_confirmation: '12345678')
-admin = Admin.create(email: 'admin.seed@user.org', customer_id: customer.id, password: '12345678', password_confirmation: '12345678')
+manager  = Manager.create(email: 'manager.seed@user.org', customer_id: customer.id, password: '12345678', password_confirmation: '12345678')
 
 berlin = Location.create(name: 'Standort Berlin', customer_id: customer.id)
 abteilung = Location.create(name: 'Abteilung Wartung', customer_id: customer.id)

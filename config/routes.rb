@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :admins, skip: [:registration]
-  devise_for :users, skip: [:registration]
   root to: 'welcome#index'
+
+  devise_for :managers, skip: [:registration]
+  devise_for :users, skip: [:registration]
 
   resources :customers, only: [] do
     resources :consumptions, only: [:index, :new, :create, :edit, :update]
   end
 
-  namespace :admin do
+  namespace :manager do
     resources :customers, only: [] do
       resource :dashboard, only: :show
       resources :locations, only: [:index, :new, :create, :edit, :update]

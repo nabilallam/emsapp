@@ -5,7 +5,7 @@ FactoryGirl.define do
 
   factory :user, class: 'User' do
     email 'user@email.de'
-    customer_id FactoryGirl.create(:customer, name: 'customer_name').id
+    customer
     password 'password'
     password_confirmation 'password'
   end

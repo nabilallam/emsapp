@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(devise_resource)
     case devise_resource
-    when :admin, Admin
-      admin_customer_dashboard_path(devise_resource.customer_id)
+    when :management, Manager
+      management_customer_dashboard_path(devise_resource.customer_id)
     when :user, User
       customer_consumptions_path(devise_resource.customer_id)
     else
