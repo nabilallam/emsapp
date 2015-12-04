@@ -6,7 +6,7 @@ FactoryGirl.define do
     name "consumption_name"
     co2_factor 1.5
     amount 10.5
-    association :location
+    location
   end
 
   factory :resource, class: 'Resource' do
@@ -15,10 +15,11 @@ FactoryGirl.define do
 
   factory :use_sector, class: 'UseSector' do
     name 'use_sector_name'
-    association :customer
+    customer
   end
 
   factory :location, class: 'Location' do
     name 'location_name'
+    customer
   end
 end
