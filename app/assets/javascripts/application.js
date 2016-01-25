@@ -19,3 +19,5 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datetimepicker
 //= require date_picker
+//= require c3
+//= require d3

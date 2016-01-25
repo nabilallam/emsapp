@@ -35,12 +35,16 @@ end
 group :development, :test do
   gem 'letter_opener'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'puma'
   gem 'pry'
   gem 'pry-rails'
+  #spring
 end
 
 group :test do
+  gem 'launchy'
+  gem 'capybara'
+  gem 'factory_girl_rails'
   gem 'respec'
-  gem 'database_cleaner'
+  #gem 'spring-commands-rspec'
 end

@@ -2,7 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'spec_helper'
+#require 'spec_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -18,8 +18,20 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  #File-type inference based on their location
+  #  #should be discussed if we add to every spec-file the type attribute e.g. type: :controller.
+  config.infer_spec_type_from_file_location!
+  # == Mock Framework
+  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
+  #
+  # config.mock_with :mocha
+  # config.mock_with :flexmock
+  # config.mock_with :rr
+  config.mock_with :rspec
+    config.mock_with :rspec
+
+  #It is needed to to be able to use the get method in feature tests
+  config.include RSpec::Rails::RequestExampleGroup, type: :feature
 
   config.include Devise::TestHelpers, type: :controller
 
