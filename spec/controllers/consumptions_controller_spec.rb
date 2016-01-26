@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe ConsumptionsController, :type => :controller do
   let!(:user) { FactoryGirl.create(:user) }
