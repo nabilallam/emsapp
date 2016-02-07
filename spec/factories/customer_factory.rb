@@ -9,4 +9,11 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
   end
+
+  factory :manager do
+    email 'manager@email.de'
+    customer
+    password 'password'
+    password_confirmation 'password'
+  end
 end

@@ -9,9 +9,17 @@ class ApplicationController < ActionController::Base
       }
     end
   end
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  helper_method :current_customer
+  def current_customer
+    current_source = current_user || current_manager
+    @current_customer ||= current_source.customer
+  end
+
 
   def after_sign_in_path_for(devise_resource)
     case devise_resource
