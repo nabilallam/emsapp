@@ -23,10 +23,9 @@ ActiveRecord::Schema.define(version: 20151204154306) do
     t.string   "name"
     t.float    "co2_factor"
     t.float    "amount"
+    t.date     "effective_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "ts_begin"
-    t.datetime "ts_end"
     t.integer  "location_id"
   end
 

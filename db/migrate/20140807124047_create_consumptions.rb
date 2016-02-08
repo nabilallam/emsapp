@@ -7,6 +7,7 @@ class CreateConsumptions < ActiveRecord::Migration
       t.string :name
       t.float :co2_factor
       t.float :amount
+      t.date :effective_date
 
       t.timestamps
     end

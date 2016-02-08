@@ -39,7 +39,7 @@ CustomerResourcesUseSector.create(customer_id: customer.id, resource_id: brown_c
 #------------------------------------------
 
 [berlin, abteilung, verkauf, halle, potsdam].each_with_index do |location, i|
-  values = {ts_begin: DateTime.current - (10 - i).day, ts_end: DateTime.current - (10 - i).day, location_id: location.id}
+  values = {effective_date: DateTime.current - (10 - i).day, location_id: location.id}
   Consumption.create({customer_id: customer.id, use_sector_id: use_sector_strom.id, resource_id: gruenstrom.id, name: 'Verbrauch 1', amount: 111.11 * i}.merge(values))
   Consumption.create({customer_id: customer.id, use_sector_id: use_sector_strom.id, resource_id: gruenstrom.id, name: 'Verbrauch 2', amount: 222.22 * i}.merge(values))
   Consumption.create({customer_id: customer.id, use_sector_id: use_sector_strom.id, resource_id: strom_netz.id, name: 'Verbrauch 1', amount: 23.11 * i}.merge(values))
@@ -47,7 +47,7 @@ CustomerResourcesUseSector.create(customer_id: customer.id, resource_id: brown_c
 end
 
 [berlin, abteilung, verkauf, halle, potsdam].each_with_index do |location, i|
-  values = {ts_begin: DateTime.current - (10 - i).day, ts_end: DateTime.current - (10 - i).day, location_id: location.id}
+  values = {effective_date: DateTime.current - (10 - i).day, location_id: location.id}
   Consumption.create({customer_id: customer.id, use_sector_id: use_sector_waerme.id, resource_id: gas.id, name: 'Gas Verbrauch 3', amount: 433.33 * i}.merge(values))
   Consumption.create({customer_id: customer.id, use_sector_id: use_sector_waerme.id, resource_id: gas.id, name: 'Gas Verbrauch 5', amount: 353.33 * i}.merge(values))
   Consumption.create({customer_id: customer.id, use_sector_id: use_sector_waerme.id, resource_id: district_heating.id, name: 'Zentralwärme 6', amount: 433.33 * i}.merge(values))

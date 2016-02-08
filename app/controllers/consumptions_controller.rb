@@ -10,8 +10,6 @@ class ConsumptionsController < ApplicationController
   def create
     @consumption = Consumption.new(consumption_params)
     @consumption.customer_id = @current_user.customer_id
-    @consumption.ts_begin = consumption_params[:ts_begin].to_datetime unless consumption_params[:ts_begin].blank?
-    @consumption.ts_end   = consumption_params[:ts_end].to_datetime.end_of_day unless consumption_params[:ts_end].blank?
     unless @consumption.save
       render :new
     else
@@ -49,8 +47,7 @@ class ConsumptionsController < ApplicationController
       :name,
       :co2_factor,
       :amount,
-      :ts_begin,
-      :ts_end
+      :effective_date,
     )
   end
 

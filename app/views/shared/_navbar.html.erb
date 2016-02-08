@@ -10,7 +10,7 @@
     <% if current_user %>
       <ul class="nav navbar-nav">
         <li class="<%= active_link?('consumptions') %>">
-          <%= link_to t('consumptions'), cucstomer_consumptions_path(current_customer) %>
+          <%= link_to t('consumptions'), customer_consumptions_path(current_customer) %>
         </li>
         <li class="<%= active_link?('consumption_charts') %>">
           <a href="#"><%= t('consumption_charts') %></a>
