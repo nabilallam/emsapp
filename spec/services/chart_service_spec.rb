@@ -3,6 +3,7 @@ require 'spec_helper'
 RSpec.describe ChartService do
   describe '#chart_columns' do
     it 'returns an array of columns' do
+      pending 'need to be implemented'
       chart_service = ChartService.new
 
       expect(chart_service.chart_columns.first.class.name).to eql 'ChartColumnsService'

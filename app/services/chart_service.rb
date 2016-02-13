@@ -27,11 +27,8 @@ class ChartService
     end
 
     def prepare
-      consumptions.select(
-        'CAST (EXTRACT (MONTH FROM effective_date) AS INTEGER) AS month,
-         CAST (EXTRACT (YEAR FROM effective_date) AS INTEGER) AS year,
-         sum(amount) as amount')
-        .group('year, month').order('year, month')
+      consumptions.select(data_selection)
+        .group(data_grouping).order(data_grouping)
     end
 
     def customer
@@ -59,6 +56,26 @@ class ChartService
         date_to.month - date_from.month + 1
       elsif time_unit == 'd'
         date_to - date_from.month + 1
+      end
+    end
+
+    def data_selection
+      if time_unit == 'm'
+        extract_day = ''
+      elsif time_unit == 'd'
+        extract_day = 'CAST (EXTRACT (DAY FROM effective_date) AS INTEGER) AS day,'
+      end
+
+      extract_day + 'CAST (EXTRACT (MONTH FROM effective_date) AS INTEGER) AS month,
+         CAST (EXTRACT (YEAR FROM effective_date) AS INTEGER) AS year,
+         sum(amount) as amount'
+    end
+
+    def data_grouping
+      if time_unit == 'm'
+        'year, month'
+      elsif time_unit == 'd'
+        'year, month, day'
       end
     end
 end
