@@ -1,11 +1,11 @@
 class ChartService
 
-  def initialize(time_unit: 'm', date_from: (Date.current - 1.year), date_to: Date.current, customer: nil, use_sector: nil)
+  def initialize(time_unit: 'm', date_from: (Date.current - 1.year), date_to: Date.current, customer: nil, use_sectors: nil)
     @time_unit   = time_unit
     @date_from   = date_from
     @date_to     = date_to
     @customer    = customer
-    @use_sector  = use_sector
+    @use_sectors  = use_sectors
   end
 
   def chart_columns
@@ -17,7 +17,7 @@ class ChartService
     def consumptions
       @consumptions ||= Consumption.where(
         effective_date: date_from..date_to,
-        use_sector_id: use_sector.id,
+        use_sector_id: use_sectors.pluck(:id),
         customer_id: customer.id
       )
     end
@@ -35,8 +35,8 @@ class ChartService
       @customer
     end
 
-    def use_sector
-      @use_sector
+    def use_sectors
+      @use_sectors
     end
 
     def date_from

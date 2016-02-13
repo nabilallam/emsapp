@@ -25,7 +25,7 @@ RSpec.describe ChartService do
          name: 'Verbrauch 1', amount: 222.22}.merge(values)
       )
 
-      chart_service = ChartService.new(customer: customer, use_sector: use_sector)
+      chart_service = ChartService.new(customer: customer, use_sectors: UseSector.where(id: use_sector.id))
 
       expect(chart_service.send(:consumptions)).not_to include(consumption)
       expect(chart_service.send(:consumptions).count).to eql 10
@@ -43,7 +43,7 @@ RSpec.describe ChartService do
 
       values = {customer: customer, location: location, use_sector: use_sector, resource: resource}
 
-      chart_service = ChartService.new(customer: customer, use_sector: use_sector)
+      chart_service = ChartService.new(customer: customer, use_sectors: UseSector.where(id: use_sector.id))
 
       expect(chart_service.send(:prepare).map(&:amount)).to eql [222.22, 222.22, 222.22]
       expect(chart_service.send(:prepare).first.month).to eql (Date.current - 2.month).month
