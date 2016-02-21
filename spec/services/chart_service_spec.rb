@@ -6,7 +6,7 @@ RSpec.describe ChartService do
       pending 'need to be implemented'
       chart_service = ChartService.new
 
-      expect(chart_service.chart_columns.first.class.name).to eql 'ChartColumnsService'
+      expect(chart_service.chart_columns.first.class.name).to eql 'ChartJsonService'
     end
   end
 
