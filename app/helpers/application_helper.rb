@@ -3,7 +3,7 @@ module ApplicationHelper
     case source_controller
     when 'consumptions'
       'active' if params[:controller] == source_controller
-    when 'overviews'
+    when 'consumption_charts'
       'active' if params[:controller] == source_controller
     end
   end
