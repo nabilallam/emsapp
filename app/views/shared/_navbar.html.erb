@@ -13,7 +13,7 @@
           <%= link_to t('consumptions'), customer_consumptions_path(current_customer) %>
         </li>
         <li class="<%= active_link?('consumption_charts') %>">
-          <a href="#"><%= t('consumption_charts') %></a>
+          <%= link_to t('charts'), customer_consumption_charts_path(current_customer) %>
         </li>
       </ul>
     <% end %>

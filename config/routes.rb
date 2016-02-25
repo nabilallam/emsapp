@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :customers, only: [] do
     resources :consumptions, only: [:index, :new, :create, :edit, :update]
+    resources :consumption_charts, only: [:index]
   end
 
   namespace :manager do

@@ -1,0 +1,27 @@
+<div id="use_sector_chart"></div>
+
+</div>
+<%= "#{@chart_service.data_entries}".html_safe %>
+<script>
+
+  var chart = c3.generate({
+    bindto: '#use_sector_chart',
+    data: {
+      x: 'x',
+      <%#json: <%=  "#{@chart_service.data_entries}".html_safe %>
+      columns: <%= "#{@chart_service.data_columns}".html_safe %>,
+      keys: {
+        x: 'name', // it's possible to specify 'x' when category axis
+      }
+    },
+    axis: {
+      x: {
+        type: 'timeseries',
+        tick: {
+          format: '%Y-%m'
+        }
+      }
+    }
+  });
+
+</script>

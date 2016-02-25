@@ -8,11 +8,23 @@ class ChartService
     @use_sectors  = use_sectors
   end
 
-  def chart_columns
-    @chart_columns ||= initialize_columns
+  def data_entries
+    @data_entries ||= initialize_columns.data_array
+  end
+
+  def data_columns
+    @data_columns ||= initialize_columns.columns
   end
 
   private
+
+    def initialize_columns
+      ChartJsonService.new(
+        date_points: date_points,
+        prepared_data: prepared_consumptions,
+        presented_data_name: use_sectors.first.name
+      )
+    end
 
     def consumptions
       @consumptions ||= Consumption.where(
@@ -23,7 +35,7 @@ class ChartService
     end
 
     def prepared_consumptions
-      @prepared_consumptions ||= prepare
+      @prepared_consumptions ||= prepare.map(&:attributes)
     end
 
     def prepare
@@ -51,11 +63,11 @@ class ChartService
       @time_unit
     end
 
-    def data_points_count
-      if time_unit == 'm'
-        date_to.month - date_from.month + 1
-      elsif time_unit == 'd'
-        date_to - date_from.month + 1
+    def date_points
+      if time_unit == 'd'
+        @date_points ||= ((date_from)..date_to).map{|d| [d.year, d.month, d.day]}
+      else
+        @date_points ||= ((date_from)..date_to).map{|d| [d.year, d.month]}.uniq
       end
     end
 

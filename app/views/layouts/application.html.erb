@@ -10,27 +10,41 @@
     <div class='container'>
       <%= render 'shared/navbar' %>
       <%= render 'shared/alerts' %>
-      xxxx
-      xxxx
-      xxxx
-      <div id="chart"></div>
       <%= yield %>
 
     </div>
-    <script>
+    <%#<script>%>
 
+<%#var chart = c3.generate({%>
+  <%#bindto: '#chart',%>
+  <%#data: {%>
+    <%#x: 'x',%>
+    <%#json: [%>
+    <%#{'name': '2015-1-1', 'strom': 200, 'gas': 200, 'papier':  400},%>
+    <%#{'name': '2015-2-1', 'strom': 100, 'gas': 300, 'papier':  400},%>
+    <%#{'name': '2015-3-1', 'strom': 300, 'gas': 200, 'papier':  500},%>
+    <%#{'name': '2015-4-1', 'strom': 400, 'gas': 100, 'papier':  500},%>
+    <%#{'name': '2015-5-1', 'strom': 400, 'gas': 100, 'papier':  500},%>
+    <%#{'name': '2015-6-1', 'strom': 400, 'gas': 100, 'papier':  500},%>
+    <%#{'name': '2015-7-1', 'strom': 400, 'gas': 100, 'papier':  500},%>
+    <%#{'name': '2015-8-1', 'strom': 400, 'gas': 100, 'papier':  500},%>
+    <%#{'name': '2015-9-1', 'strom': 400, 'gas': 100, 'papier':  500},%>
+    <%#],%>
+    <%#keys: {%>
+      <%#x: 'name', // it's possible to specify 'x' when category axis%>
+      <%#value: ['strom', 'gas', 'papier'],%>
+    <%#}%>
+  <%#},%>
+  <%#axis: {%>
+    <%#x: {%>
+       <%#type: 'timeseries',%>
+       <%#tick: {%>
+         <%#format: '%Y-%m'%>
+       <%#}%>
+    <%#}%>
+  <%#}%>
+<%#});%>
 
-      var chart = c3.generate({
-          bindto: '#chart',
-          data: {
-                columns: [
-                        ['data1', 30, 200, 100, 400, 150, 250],
-                        ['data2', 50, 20, 10, 40, 15, 25]
-                      ]
-              }
-      });
-
-
-    </script>
+    <%#</script>%>
   </body>
 </html>
